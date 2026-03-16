@@ -16,14 +16,14 @@ phases:
       - echo running mvn clean install...
       - mvn clean install
       - echo building the Docker image...
-      - docker build -t $REPOSITORY_URI:lastest .
+      - docker build -t $REPOSITORY_URI:latest .
       - echo tagging the Docker image...
-      - docker tag $REPOSITORY_URI:lastest $REPOSITORY_URI:$IMAGE_TAG
+      - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
   post_build:
     commands:
       - echo pushing Docker image to Amazon ECR started on `date`
       - echo pushing to repository...
-      - docker push $REPOSITORY_URI:lastest
+      - docker push $REPOSITORY_URI:latest
       - docker push $REPOSITORY_URI:$IMAGE_TAG
       - echo setting container image...
       - DOCKER_CONTAINER_NAME=cdcicontainer
